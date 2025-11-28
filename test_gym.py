@@ -1,6 +1,7 @@
 # test_gym.py
 from simulator.env import StationPlacementEnv
 import os
+import numpy as np
 
 # Paths to prepared data
 network_path = "data/prepared/multi_modal_graph.pkl"
@@ -22,17 +23,24 @@ env = StationPlacementEnv(
 )
 
 # Reset env
-obs = env.reset()
-print("Initial observation:", obs)
+obs, info = env.reset()
+print("Initial observation keys:", obs.keys())
+print("Station map shape:", obs["station_map"].shape)
+print("Placements left:", obs["placements_left"])
+print("Action mask shape:", obs["action_mask"].shape)
 
 done = False
 total_reward = 0.0
 
 while not done:
     # Select the first available action (just for testing)
-    action = int((env.action_mask * range(env.N_candidates)).nonzero()[0][0])
-    obs, reward, done, info = env.step(action)
+    valid_actions = np.where(env.action_mask)[0]
+    if len(valid_actions) == 0:
+        break
+    action = valid_actions[0]
+    obs, reward, terminated, truncated, info = env.step(action)
+    done = terminated or truncated
     total_reward += reward
     env.render()
 
-print("Episode finished. Total reward:", total_reward)
+print("\nEpisode finished. Total reward:", total_reward)
