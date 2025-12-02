@@ -134,7 +134,7 @@ RL-WMATA/
 ├── requirements_colab.txt        # Colab-specific requirements
 │
 ├── README.md                      # This file
-└── report.qmd                     # Scientific journal-style report
+└──
 ```
 
 **Data Directory Note**: The full data directory is available via Google Drive: https://drive.google.com/drive/folders/1GbpfGzb8V6_Uq_csaMjQKoKrV_giwuxY?usp=sharing
@@ -418,7 +418,6 @@ For GPU-accelerated training, use the provided Colab notebook:
    - Train models with GPU acceleration
    - Visualize results
 
-See `COLAB_GUIDE.md` for detailed Colab instructions.
 
 ---
 
@@ -476,7 +475,6 @@ Then open http://localhost:6006
 - 500,000-1,000,000 timesteps (~2-5 hours on GPU)
 - Recommended for research papers and production use
 
-See `TIMESTEPS_GUIDE.md` for detailed recommendations.
 
 ### Evaluation
 
@@ -543,7 +541,6 @@ The project includes several performance optimizations:
 4. **Parallel Environments**: Uses multiple parallel environments for faster data collection
 5. **Efficient Data Structures**: NetworkX graphs optimized for travel time queries
 
-See `PERFORMANCE_OPTIMIZATIONS.md` and `GPU_OPTIMIZATIONS.md` for details.
 
 ---
 
@@ -575,33 +572,6 @@ python compare_models.py    # Compare all methods
 
 ---
 
-## Project Status
-
-### Completed Features ✅
-
-- ✅ Gymnasium-compatible environment with realistic metrics
-- ✅ Geographic coverage calculations using Haversine distance
-- ✅ Integration with existing WMATA infrastructure
-- ✅ Time-dependent demand modeling with hourly profiles
-- ✅ PPO agent training and evaluation
-- ✅ DQN agent training and evaluation
-- ✅ Baseline methods (Greedy, K-Means)
-- ✅ Comprehensive visualization tools
-- ✅ TensorBoard logging and monitoring
-- ✅ GPU-accelerated training
-- ✅ Data validation and fixing tools
-- ✅ Google Colab support
-
-### In Progress / Future Work ⚠️
-
-- ⚠️ GNN-based policy network (`agents/gnn_policy.py`)
-- ⚠️ Multi-modal network optimization
-- ⚠️ Real discrete-event simulation (SimPy integration)
-- ⚠️ Multi-day stochastic demand modeling
-- ⚠️ Advanced visualization dashboards
-- ⚠️ Hyperparameter optimization framework
-
----
 
 ## Key Metrics & Results
 
@@ -609,7 +579,7 @@ python compare_models.py    # Compare all methods
 
 After training for 1,000,000 timesteps:
 
-- **Coverage**: 70-85% of population within 800m catchment radius
+- **Coverage**: % of population within 800m catchment radius
 - **Average Wait Time**: 4-6 minutes (down from 10 minutes baseline)
 - **Trips Served**: 500,000+ trips per day
 - **Episode Reward**: 500-600 (stable and consistent)
@@ -617,69 +587,12 @@ After training for 1,000,000 timesteps:
 ### Convergence Indicators
 
 Good training shows:
-- ✅ Stable, increasing rewards
-- ✅ Consistent station selections
-- ✅ High coverage (>70%)
-- ✅ Low wait times (<5 minutes)
-- ✅ Decreasing reward variance
+-  Stable, increasing rewards
+-  Consistent station selections
+-  High coverage
+-  Low wait times 
+-  Decreasing reward variance
 
 ---
 
-## Documentation
 
-Additional documentation files:
-
-- `COLAB_GUIDE.md`: Detailed Google Colab setup instructions
-- `TIMESTEPS_GUIDE.md`: Training timestep recommendations
-- `DATA_IMPROVEMENTS.md`: Data enhancement details
-- `PERFORMANCE_OPTIMIZATIONS.md`: Performance optimization details
-- `VISUALIZATION_GUIDE.md`: Visualization tool usage
-- `USAGE_GUIDE.md`: Comprehensive usage instructions
-- `COMPREHENSIVE_IMPROVEMENTS.md`: Project improvement summary
-- `report.qmd`: Scientific journal-style report
-
----
-
-## Citation
-
-If you use this project in your research, please cite:
-
-```bibtex
-@software{metro_station_rl,
-  title = {Metro Station Placement Optimization Using Reinforcement Learning},
-  author = {Your Name},
-  year = {2024},
-  url = {https://github.com/yourusername/RL-WMATA}
-}
-```
-
----
-
-## License
-
-[Specify your license here]
-
----
-
-## Contributing
-
-[Contributing guidelines if applicable]
-
----
-
-## Acknowledgments
-
-- WMATA for transit data
-- U.S. Census Bureau for LODES data
-- Stable-Baselines3 team for RL framework
-- Google Colab for GPU resources
-
----
-
-## Contact
-
-[Your contact information]
-
----
-
-**Last Updated**: 2024
